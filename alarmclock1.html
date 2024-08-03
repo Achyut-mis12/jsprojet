@@ -1,0 +1,135 @@
+   <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body{
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: rgb(129, 134, 63);
+            flex-direction: column;
+        }
+
+        .container{
+            width: 600px;
+            height: 400px;
+            /* background-color: aqua; */
+            color: aqua;
+        }
+        .top{
+            height: 60%;
+            width: 100%;
+            /* background-color: yellow; */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 130px;
+        }
+        .bottom{
+            height: 40%;
+            width: 100%;
+            /* background-color: violet; */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+         
+        }
+        input{
+            width: 200px;
+            padding: 10px;
+        }
+        button{
+            padding: 5px 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1 style="text-align: center; color: white;">Alarm clock application</h1>
+        <div class="container">
+            <div class="top"></div>
+            <form class="bottom">
+                <input type="datetime-local" onchange="getTime(event)">
+                <!-- <input type="text" onchange="xyz()"> -->
+              
+                <div>
+                    <button onclick="StartAlarm(event)">Submit</button>
+                    <button onclick="resetAlarm()" type="reset">Reset</button>
+                </div>
+            </form>
+        </div>
+
+    <script>
+
+        let timer;
+        let alarmDate;
+        function getTime(event){
+           
+            // console.log(event.target.value)
+        alarmDate = new Date(event.target.value)
+            console.log(alarmDate)
+
+
+
+        }
+
+        // function xyz(){
+        //     console.log("hello")
+        // }
+
+        let topBox = document.querySelector('.top')
+        // console.log(topBox)
+          
+          setInterval(()=>{
+            let date = new Date()
+            // console.log(date)
+            let hour = date.getHours()
+            let minute = date.getMinutes()
+            let seconds = date.getSeconds()
+         
+            // console.log(${hour}:${minute}:${seconds})
+            topBox.innerHTML =(`${hour}:${minute}:${seconds}`)
+
+          },1000)
+
+          function StartAlarm(event){
+            event.preventDefault()
+            alert('alarm is set')
+            
+            let currentTime = new Date()
+            console.log(currentTime)
+
+            let timeGap = alarmDate - currentTime;
+            console.log(timeGap)
+
+            let audio = new Audio()
+            audio.src = 'digital-alarm-clock-151920.mp3'
+          timer =   setTimeout(()=>{
+                console.log("aram is ringing")
+                audio.play()
+            },timeGap)
+          }
+
+          function resetAlarm(){
+            alert("alarm is reset")
+
+            clearInterval(timer)
+          }
+
+
+
+    </script>
+</body>
+</html>
