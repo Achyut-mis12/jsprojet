@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            font-family: Arial, sans-serif;
+        }
+       .row{
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        height: 50vh;
+        background-color: aquamarine;
+       }
+    </style>
+</head>
+<body>
+    <h1 >
+        curency changer
+    </h1>
+    <div class="row">
+    <div class="col1">
+        <input type="text" id="rs" placeholder="enter rupees">
+        <button onclick="Ruppes()">click</button>
+        <p>Doller: <span id ="dl"></span></p>
+        </div>
+        <div class="col2">
+            <input type="text" id="dll" placeholder="enter doller">
+            <button onclick="Doller()">click</button>
+            <p>Doller: <span id ="rss"></span></p>
+            
+        </div>
+    </div>
+<script>
+    function Ruppes(){
+        var rs = document.getElementById('rs').value;
+        var dl =parseInt (rs )/80;
+        document.getElementById('dl').innerText = dl;
+    }
+    function Doller(){
+        var dll = document.getElementById('dll').value;
+        var rs = parseInt (dll ) *80;
+        document.getElementById('rss').innerText = rs;
+    }
+
+ 
+</script>
+</body>
+</html>
